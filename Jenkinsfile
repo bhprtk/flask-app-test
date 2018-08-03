@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'pytest test.py'
+                echo 'testing'
             }
         }
         stage('Deploy') {
