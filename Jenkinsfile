@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'testing'
+                sh 'sleep 1'
             }
         }
         stage('Deploy') {
