@@ -6,6 +6,11 @@ pipeline {
                 sh 'docker build -t my-flask-image:latest .'
             }
         }
+        stage('Test') {
+            steps {
+                sh 'pytest test.py'
+            }
+        }
         stage('Deploy') {
             steps {
                 sh 'docker container rm -f flask'
