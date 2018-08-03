@@ -1,8 +1,11 @@
-FROM ubuntu:latest
-RUN apt-get update -y
-RUN apt-get install -y python-pip python-dev build-essential
-ADD . /flask-app
-WORKDIR /flask-app
+FROM python
+
+ENV PYTHONUNBUFFERED 1
+RUN mkdir -p /opt/services/flaskapp/src
+COPY requirements.txt /opt/services/flaskapp/src/
+WORKDIR /opt/services/flaskapp/src
 RUN pip install -r requirements.txt
-ENTRYPOINT ["python"]
-CMD ["flask-docker.py"]
+COPY . /opt/services/flaskapp/src
+EXPOSE 5000
+
+CMD ["python", "flask-docker.py"]
