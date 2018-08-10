@@ -1,14 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
-            steps {
-                sh 'docker build -t my-flask-image:latest .'
-            }
-        }
         stage('Test') {
             steps {
                 sh 'sleep 3'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'docker build -t my-flask-image:latest .'
             }
         }
         stage('Deploy') {
